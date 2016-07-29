@@ -1,9 +1,24 @@
 Package: NYSEDtools
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Title: Data Management, Analysis, Visualization and Reporting Tools for NYSED
+    L2RPT Data
+Version: 0.0.1
+Authors@R: c(person("Andrew", "Martin", role = c("aut","cre"), email = "almartin@gmail.com"))
+Description: NYSEDtools is a suite of data management, analysis, visualization
+    and reporting tools for NYSED L2RPT Data.
+License: file LICENSE
+Depends:
+    ggplot2,
+    magrittr,
+    R(>= 2.10.0)
+Suggests:
+    testthat,
+    knitr
+Imports:
+    dplyr,
+    ensurer,
+    tidyr,
+    readxl
+VignetteBuilder: knitr
 LazyData: TRUE
+RoxygenNote: 5.0.1
