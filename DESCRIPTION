@@ -2,7 +2,7 @@ Package: NYSEDtools
 Type: Package
 Title: Data Management, Analysis, Visualization and Reporting Tools for NYSED
     L2RPT Data
-Version: 0.0.5
+Version: 0.0.6
 Authors@R: c(person("Andrew", "Martin", role = c("aut","cre"), email = "almartin@gmail.com"))
 Description: NYSEDtools is a suite of data management, analysis, visualization
     and reporting tools for NYSED L2RPT Data.

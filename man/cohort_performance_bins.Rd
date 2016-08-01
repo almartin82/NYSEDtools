@@ -11,7 +11,7 @@ cohort_performance_bins(sirs301_obj, studentids, subject)
 
 \item{studentids}{students you want to plot}
 
-\item{subject}{c('ELA', 'Math')}
+\item{subject}{c('ELA', 'Math', 'Sci')}
 }
 \value{
 ggplot2 object

@@ -24,3 +24,11 @@ calculate_cohort <- function(grade, start_year, kind = 'college_entry') {
 
   out
 }
+
+
+kipp_4col <- c(
+  rgb(207, 204, 193, max = 255),
+  rgb(230, 230, 230, max = 255),
+  rgb(254, 188, 17, max = 255),
+  rgb(247, 148, 30, max = 255)
+)
