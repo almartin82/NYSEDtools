@@ -4,7 +4,7 @@
 \alias{sirs301}
 \title{Create a sirs301 object}
 \usage{
-sirs301(csvs, verbose = FALSE, ...)
+sirs301(csvs, cohort_kind = "college_entry", verbose = FALSE, ...)
 }
 \arguments{
 \item{csvs}{data frame of sirs 301 exports - eg output of

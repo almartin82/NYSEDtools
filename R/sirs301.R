@@ -9,13 +9,41 @@
 #' @param ... additional arguments to pass to constructor functions
 #' @export
 
-sirs301 <- function(csvs, verbose = FALSE, ...) UseMethod("sirs301")
+sirs301 <- function(
+  csvs, cohort_kind = 'college_entry', verbose = FALSE, ...
+) UseMethod("sirs301")
 
 #' @export
-sirs301.default <- function(csvs, verbose = FALSE, ...) {
+sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
 
   #clean up df names
   df <- janitor::clean_names(csvs)
+
+  #clean up types
+  df <- df %>%
+    dplyr::mutate(
+      curr_grade_lvl = ifelse(curr_grade_lvl == 'KF', 0, curr_grade_lvl),
+      curr_grade_lvl = as.integer(curr_grade_lvl)
+    )
+
+  #get academic year
+  df <- df %>%
+    tidyr::separate(
+      col = report_school_year,
+      into = c('start_year', 'end_year'),
+      sep = '-',
+      remove = FALSE,
+      convert = TRUE
+    ) %>%
+    dplyr::mutate(
+      end_year = 2000 + end_year
+    )
+
+  #get cohort
+  df <- df %>%
+    dplyr::mutate(
+      cohort_numeric = calculate_cohort(curr_grade_lvl, start_year, cohort_kind)
+    )
 
   #grab NYSESLAT
   nyseslat <- df %>%

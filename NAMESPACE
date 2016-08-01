@@ -2,5 +2,6 @@
 
 S3method(print,sirs301)
 S3method(sirs301,default)
+export(calculate_cohort)
 export(sirs301)
 export(sirs301_import_csvs)

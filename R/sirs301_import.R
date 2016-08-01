@@ -34,6 +34,7 @@ sirs301_import_csvs <- function(
   exports_results <- dplyr::bind_rows(exports_list)
 
   # Turn into tbl_df
+  exports_results <- tibble::as_tibble(exports_results)
 
   # Return
   exports_results
