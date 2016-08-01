@@ -1,6 +1,6 @@
 # NYSEDtools 0.0.5 | 08/01/2016
 
-* `cohort_performance_bins` visualization.
+* `sirs301` object creation breaks assessment_description into `test_subject` and `test_grade`.
 
 
 # NYSEDtools 0.0.4 | 08/01/2016

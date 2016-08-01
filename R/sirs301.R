@@ -12,9 +12,7 @@
 #'
 #' @export
 
-sirs301 <- function(
-  csvs, cohort_kind = 'college_entry', verbose = FALSE, ...
-) UseMethod("sirs301")
+sirs301 <- function(csvs, cohort_kind = 'college_entry', verbose = FALSE, ...) UseMethod("sirs301")
 
 #' @export
 sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
@@ -28,6 +26,7 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
       curr_grade_lvl = ifelse(curr_grade_lvl == 'KF', 0, curr_grade_lvl),
       curr_grade_lvl = as.integer(curr_grade_lvl)
     )
+
 
   #get academic year
   df <- df %>%
@@ -52,12 +51,40 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
   nyseslat <- df %>%
     dplyr::filter(
       grepl('NYSESLAT', df$assessment_description, fixed = TRUE)
+    ) %>%
+    #break out assessment_description
+    tidyr::separate(
+      col = assessment_description,
+      into = c('test_subject', 'test_grade', 'discard1', 'discard2'),
+      sep = ' ',
+      remove = FALSE,
+      convert = TRUE
+    ) %>%
+    dplyr::select(
+      -discard1, -discard2
+    ) %>%
+    dplyr::mutate(
+      test_subject = gsub(':', '', test_subject, fixed = TRUE)
     )
 
   #grab science
   sci <- df %>%
     dplyr::filter(
       grepl('Sci: Scale', df$assessment_description, fixed = TRUE)
+    ) %>%
+    #break out assessment_description
+    tidyr::separate(
+      col = assessment_description,
+      into = c('discard1', 'test_grade', 'test_subject', 'discard2'),
+      sep = ' ',
+      remove = FALSE,
+      convert = TRUE
+    ) %>%
+    dplyr::select(
+      -discard1, -discard2
+    ) %>%
+    dplyr::mutate(
+      test_subject = gsub(':', '', test_subject, fixed = TRUE)
     )
 
   #grab ela / math
@@ -65,6 +92,17 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
     dplyr::filter(
       grepl(' ELA', df$assessment_description, fixed = TRUE) |
       grepl(' Math', df$assessment_description, fixed = TRUE)
+    ) %>%
+    #break out assessment_description
+    tidyr::separate(
+      col = assessment_description,
+      into = c('discard', 'test_grade', 'test_subject'),
+      sep = ' ',
+      remove = FALSE,
+      convert = TRUE
+    ) %>%
+    dplyr::select(
+      -discard
     )
 
   out <- list(
