@@ -1,6 +1,6 @@
 # NYSEDtools 0.0.4 | 08/01/2016
 
-* `academic_year` and `cohort` utility functions.
+* `calculate_cohort` utility function.
 
 
 # NYSEDtools 0.0.3 | 07/29/2016
