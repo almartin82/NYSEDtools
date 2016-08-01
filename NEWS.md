@@ -1,3 +1,8 @@
+# NYSEDtools 0.0.5 | 08/01/2016
+
+* `cohort_performance_bins` visualization.
+
+
 # NYSEDtools 0.0.4 | 08/01/2016
 
 * `calculate_cohort` utility function.

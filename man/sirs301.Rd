@@ -10,6 +10,8 @@ sirs301(csvs, cohort_kind = "college_entry", verbose = FALSE, ...)
 \item{csvs}{data frame of sirs 301 exports - eg output of
 sirs301_import_csvs}
 
+\item{cohort_kind}{should we name cohorts by their college entry or college graduation year?}
+
 \item{verbose}{should sirs301 print status updates?  default is FALSE.}
 
 \item{...}{additional arguments to pass to constructor functions}

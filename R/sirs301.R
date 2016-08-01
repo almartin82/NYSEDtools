@@ -5,6 +5,7 @@
 #'
 #' @param csvs data frame of sirs 301 exports - eg output of
 #' sirs301_import_csvs
+#' @param cohort_kind should we name cohorts by their college entry or college graduation year?
 #' @param verbose should sirs301 print status updates?  default is FALSE.
 #' @param ... additional arguments to pass to constructor functions
 #' @export
