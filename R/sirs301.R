@@ -1,4 +1,5 @@
 #' @title Create a sirs301 object
+#' @import ggplot2 magrittr
 #'
 #' @description
 #' \code{sirs301} creates a sirs301 object, enabling analysis and reporting.
@@ -8,6 +9,7 @@
 #' @param cohort_kind should we name cohorts by their college entry or college graduation year?
 #' @param verbose should sirs301 print status updates?  default is FALSE.
 #' @param ... additional arguments to pass to constructor functions
+#'
 #' @export
 
 sirs301 <- function(
