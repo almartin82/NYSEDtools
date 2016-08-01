@@ -27,7 +27,6 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
       curr_grade_lvl = as.integer(curr_grade_lvl)
     )
 
-
   #get academic year
   df <- df %>%
     tidyr::separate(
@@ -50,7 +49,7 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
   #grab NYSESLAT
   nyseslat <- df %>%
     dplyr::filter(
-      grepl('NYSESLAT', df$assessment_description, fixed = TRUE)
+      grepl('NYSESLAT', assessment_description, fixed = TRUE)
     ) %>%
     #break out assessment_description
     tidyr::separate(
@@ -64,14 +63,26 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
       -discard1, -discard2
     ) %>%
     dplyr::mutate(
-      test_subject = gsub(':', '', test_subject, fixed = TRUE)
+      test_subject = gsub(':', '', test_subject, fixed = TRUE),
+      perf_level_numeric = NA
+    )
+
+  sci_math <- df %>%
+    dplyr::filter(grepl('ELA|Math|Sci', assessment_description)) %>%
+    tidyr::separate(
+      col = standard_achieved,
+      into = c('discard', 'standard_achieved_numeric'),
+      sep = ' ',
+      remove = FALSE,
+      convert = TRUE
+    ) %>%
+    dplyr::select(
+      -discard
     )
 
   #grab science
-  sci <- df %>%
-    dplyr::filter(
-      grepl('Sci: Scale', df$assessment_description, fixed = TRUE)
-    ) %>%
+  sci <- sci_math %>%
+    dplyr::filter(grepl('Sci', assessment_description, fixed = TRUE)) %>%
     #break out assessment_description
     tidyr::separate(
       col = assessment_description,
@@ -88,11 +99,8 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
     )
 
   #grab ela / math
-  ela_math <- df %>%
-    dplyr::filter(
-      grepl(' ELA', df$assessment_description, fixed = TRUE) |
-      grepl(' Math', df$assessment_description, fixed = TRUE)
-    ) %>%
+  ela_math <- sci_math %>%
+    dplyr::filter(grepl('ELA|Math', assessment_description)) %>%
     #break out assessment_description
     tidyr::separate(
       col = assessment_description,
