@@ -83,10 +83,13 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
       scale_score = numeric_score,
       performance_level = standard_achieved
     ) %>%
+    dplyr::rowwise() %>%
     dplyr::mutate(
-      scale_score = as.numeric(scale_score),
-      performance_level_numeric = as.numeric(performance_level_numeric)
-    )
+      scale_score = ifelse(scale_score == '', NA, as.numeric(scale_score)),
+      performance_level_numeric = ifelse(
+        performance_level_numeric == 'tested', NA, as.numeric(performance_level_numeric))
+    ) %>%
+    dplyr::ungroup()
 
   #grab science
   sci <- ela_math_sci %>%
@@ -126,10 +129,14 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
   class(sci) <- c("sirs301_sci", class(sci))
   class(nyseslat) <- c("sirs301_nyseslat", class(nyseslat))
 
+  ##GROWTH
+  growth <- sirs301_ela_math_growth(ela_math)
+
   out <- list(
     'ela_math' = ela_math,
     'sci' = sci,
-    'nyseslat' = nyseslat
+    'nyseslat' = nyseslat,
+    'growth' = growth
   )
 
   #make the object class 'sirs301'
@@ -168,5 +175,11 @@ print.sirs301 <- function(x, ...) {
   cat(paste(n_students))
   cat(" students from ")
   cat(paste(n_schools))
-  cat(" schools")
+  cat(" schools\n\n")
+
+  #about the object
+  cat("The sirs301 object has ")
+  cat(n_df)
+  cat(" dataframes, named:\n")
+  cat(paste(names(x), collapse = ', '))
 }

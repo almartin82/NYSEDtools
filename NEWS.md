@@ -1,3 +1,8 @@
+# NYSEDtools 0.1.0 | 08/01/2016
+
+* running `sirs301()` will create a `sirs301$growth` data object.
+
+
 # NYSEDtools 0.0.6 | 08/01/2016
 
 * `cohort_performance_bins` visualization.

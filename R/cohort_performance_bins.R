@@ -18,7 +18,7 @@ cohort_performance_bins <- function(
   subject %>% ensurer::ensure_that(
     . %in% valid_subjects ~
       paste0("valid values for subject are: ",
-              paste(valid_subjects, collapse = ', ')
+             paste(valid_subjects, collapse = ', ')
       )
   )
 
@@ -65,7 +65,7 @@ cohort_performance_bins <- function(
     dplyr::left_join(
       term_totals[, c(2,3)],
       by = "test_grade"
-  ) %>%
+    ) %>%
     dplyr::mutate(
       pct = n_level /  n_total * 100
     )
