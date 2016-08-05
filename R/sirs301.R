@@ -71,13 +71,21 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
     dplyr::filter(grepl('ELA|Math|Sci', assessment_description)) %>%
     tidyr::separate(
       col = standard_achieved,
-      into = c('discard', 'standard_achieved_numeric'),
+      into = c('discard', 'performance_level_numeric'),
       sep = ' ',
       remove = FALSE,
       convert = TRUE
     ) %>%
     dplyr::select(
       -discard
+    ) %>%
+    dplyr::rename(
+      scale_score = numeric_score,
+      performance_level = standard_achieved
+    ) %>%
+    dplyr::mutate(
+      scale_score = as.numeric(scale_score),
+      performance_level_numeric = as.numeric(performance_level_numeric)
     )
 
   #grab science
