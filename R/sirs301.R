@@ -20,7 +20,7 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
   #clean up df names
   df <- janitor::clean_names(csvs)
 
-  #clean up types
+  #clean up data
   df <- df %>%
     dplyr::mutate(
       curr_grade_lvl = ifelse(curr_grade_lvl == 'KF', 0, curr_grade_lvl),
@@ -31,13 +31,13 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
   df <- df %>%
     tidyr::separate(
       col = report_school_year,
-      into = c('start_year', 'end_year'),
+      into = c('start_year', 'test_year'),
       sep = '-',
       remove = FALSE,
       convert = TRUE
     ) %>%
     dplyr::mutate(
-      end_year = 2000 + end_year
+      test_year = 2000 + test_year
     )
 
   #get cohort
@@ -67,7 +67,7 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
       perf_level_numeric = NA
     )
 
-  sci_math <- df %>%
+  ela_math_sci <- df %>%
     dplyr::filter(grepl('ELA|Math|Sci', assessment_description)) %>%
     tidyr::separate(
       col = standard_achieved,
@@ -81,7 +81,7 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
     )
 
   #grab science
-  sci <- sci_math %>%
+  sci <- ela_math_sci %>%
     dplyr::filter(grepl('Sci', assessment_description, fixed = TRUE)) %>%
     #break out assessment_description
     tidyr::separate(
@@ -99,7 +99,7 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
     )
 
   #grab ela / math
-  ela_math <- sci_math %>%
+  ela_math <- ela_math_sci %>%
     dplyr::filter(grepl('ELA|Math', assessment_description)) %>%
     #break out assessment_description
     tidyr::separate(
@@ -112,6 +112,11 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
     dplyr::select(
       -discard
     )
+
+  #give the data objects classes
+  class(ela_math) <- c("sirs301_ela_math", class(ela_math))
+  class(sci) <- c("sirs301_sci", class(sci))
+  class(nyseslat) <- c("sirs301_nyseslat", class(nyseslat))
 
   out <- list(
     'ela_math' = ela_math,
