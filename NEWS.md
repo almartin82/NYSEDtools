@@ -1,4 +1,4 @@
-# NYSEDtools 0.1.0 | 08/01/2016
+# NYSEDtools 0.1.0 | 08/05/2016
 
 * running `sirs301()` will create a `sirs301$growth` data object.
 
