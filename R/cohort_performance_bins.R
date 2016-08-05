@@ -18,7 +18,7 @@ cohort_performance_bins <- function(
   subject %>% ensurer::ensure_that(
     . %in% valid_subjects ~
       paste0("valid values for subject are: ",
-              paste(valid_subjects, collapse = ', ')
+             paste(valid_subjects, collapse = ', ')
       )
   )
 
@@ -34,7 +34,7 @@ cohort_performance_bins <- function(
 
   term_totals <- df %>%
     dplyr::select(
-      test_subject, test_grade, standard_achieved, standard_achieved_numeric
+      test_subject, test_grade, performance_level, performance_level_numeric
     ) %>%
     #first group by term
     dplyr::group_by(
@@ -49,15 +49,15 @@ cohort_performance_bins <- function(
   perf_level_totals <- df %>%
     #then group by perf_level
     dplyr::group_by(
-      test_subject, test_grade, standard_achieved_numeric
+      test_subject, test_grade, performance_level_numeric
     ) %>%
     dplyr::summarize(
       n_level = n()
     ) %>%
     #include at grade level flag
     dplyr::mutate(
-      proficient_dummy = ifelse(standard_achieved_numeric %in% c(3, 4), 'Yes', 'No'),
-      order = perf_level_order(as.numeric(standard_achieved_numeric))
+      proficient_dummy = ifelse(performance_level_numeric %in% c(3, 4), 'Yes', 'No'),
+      order = perf_level_order(as.numeric(performance_level_numeric))
     )
 
 
@@ -65,7 +65,7 @@ cohort_performance_bins <- function(
     dplyr::left_join(
       term_totals[, c(2,3)],
       by = "test_grade"
-  ) %>%
+    ) %>%
     dplyr::mutate(
       pct = n_level /  n_total * 100
     )
@@ -105,7 +105,7 @@ cohort_performance_bins <- function(
       aes(
         x = test_grade,
         y = pct,
-        fill = factor(standard_achieved_numeric)
+        fill = factor(performance_level_numeric)
       ),
       stat = "identity"
     ) +
@@ -115,7 +115,7 @@ cohort_performance_bins <- function(
       aes(
         x = test_grade,
         y = pct,
-        fill = factor(standard_achieved_numeric)
+        fill = factor(performance_level_numeric)
       ),
       stat = "identity"
     )
