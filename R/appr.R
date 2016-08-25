@@ -63,8 +63,14 @@ appr_performance_by_year_table <- function(
 
   if (sum(missing_mask) > 0) {
     warning(
-      sprintf("there are %s unmatched students in your roster file!\n", sum(missing_mask))
-      #todo: list them here
+      sprintf(
+        "there are %s unmatched students in your roster file!\n
+         they are: %s",
+        c(
+          sum(missing_mask),
+          paste(shQuote(unique(df$student_id)[missing_mask]), collapse=", ")
+        )
+      )
     )
   }
 
