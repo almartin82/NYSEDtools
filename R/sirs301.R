@@ -4,23 +4,32 @@
 #' @description
 #' \code{sirs301} creates a sirs301 object, enabling analysis and reporting.
 #'
-#' @param csvs data frame of sirs 301 exports - eg output of
+#' @param csvs data frame of sirs 301 exports from New York's L2RPT - eg output of
 #' sirs301_import_csvs
 #' @param cohort_kind should we name cohorts by their college entry or college graduation year?
+#' @param a roster data frame, with additional student demographic information.
+#' if NA (default), this is ignored.
 #' @param verbose should sirs301 print status updates?  default is FALSE.
 #' @param ... additional arguments to pass to constructor functions
 #'
 #' @export
 
-sirs301 <- function(csvs, cohort_kind = 'college_entry', verbose = FALSE, ...) UseMethod("sirs301")
+sirs301 <- function(
+  csvs,
+  cohort_kind = 'college_entry',
+  roster = NA,
+  verbose = FALSE,
+  ...
+) UseMethod("sirs301")
 
 #' @export
-sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
+sirs301.default <- function(csvs, cohort_kind, roster, verbose, ...) {
 
   #clean up df names
   df <- janitor::clean_names(csvs)
 
   #clean up data
+  if (verbose) cat('cleaning up raw csvs')
   df <- df %>%
     dplyr::mutate(
       curr_grade_lvl = ifelse(curr_grade_lvl == 'KF', 0, curr_grade_lvl),
@@ -138,6 +147,10 @@ sirs301.default <- function(csvs, cohort_kind, verbose = FALSE, ...) {
     'nyseslat' = nyseslat,
     'growth' = growth
   )
+
+  if (!is.na(roster)) {
+    out[['roster']] <- roster
+  }
 
   #make the object class 'sirs301'
   class(out) <- c("sirs301", class(out))

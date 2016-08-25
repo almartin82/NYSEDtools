@@ -36,6 +36,9 @@ sirs301_import_csvs <- function(
   # Turn into tbl_df
   exports_results <- tibble::as_tibble(exports_results)
 
+  # studentid should be character
+  exports_results$STUDENT_ID <- as.character(exports_results$STUDENT_ID)
+
   # Return
   exports_results
 }
