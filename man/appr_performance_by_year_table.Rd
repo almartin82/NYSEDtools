@@ -15,6 +15,9 @@ appr_performance_by_year_table(sirs301, subject, end_year, location_name)
 
 \item{location_name}{name of the location to report on.}
 }
+\value{
+list
+}
 \description{
 A function to make the APPR performance vs 2+ year performance table.
 }

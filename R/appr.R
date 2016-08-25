@@ -7,7 +7,7 @@
 #' @param end_year integer, year that you want to generate the table for
 #' @param location_name name of the location to report on.
 #'
-#' @return
+#' @return list
 #' @export
 
 appr_performance_by_year_table <- function(
@@ -85,7 +85,7 @@ appr_performance_by_year_table <- function(
   all_stu$test_grade <- ifelse(is.na(all_stu$test_grade), 'All', all_stu$test_grade)
 
   second_yr <- dplyr::bind_rows(second_yr_stu_per_grade, second_yr_stu_all_grades)
-  second_yr$test_grade <- ifelse(is.na(second_yr$test_grade, 'All', second_yr$test_grade))
+  second_yr$test_grade <- ifelse(is.na(second_yr$test_grade), 'All', second_yr$test_grade)
 
   #we could make it fancy, but let's just return the data
   list(
