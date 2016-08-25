@@ -8,7 +8,7 @@
 #' sirs301_import_csvs
 #' @param cohort_kind should we name cohorts by their college entry or college graduation year?
 #' @param a roster data frame, with additional student demographic information.
-#' if FALSE (default), this is ignored.
+#' if NA (default), this is ignored.
 #' @param verbose should sirs301 print status updates?  default is FALSE.
 #' @param ... additional arguments to pass to constructor functions
 #'
@@ -17,7 +17,7 @@
 sirs301 <- function(
   csvs,
   cohort_kind = 'college_entry',
-  roster = FALSE,
+  roster = NA,
   verbose = FALSE,
   ...
 ) UseMethod("sirs301")
@@ -147,6 +147,10 @@ sirs301.default <- function(csvs, cohort_kind, roster, verbose, ...) {
     'nyseslat' = nyseslat,
     'growth' = growth
   )
+
+  if (!is.na(roster)) {
+    out[['roster']] <- roster
+  }
 
   #make the object class 'sirs301'
   class(out) <- c("sirs301", class(out))
