@@ -144,7 +144,8 @@ appr_pli <- function(
 
   cat(subject)
   cat('\n')
-  write.table(pli)
+
+  print(ascii::ascii(pli), type = 'pandoc')
 
   l234 <- pli$`Level 2` + pli$`Level 3` + pli$`Level 4`
   l34 <-  pli$`Level 3` + pli$`Level 4`
