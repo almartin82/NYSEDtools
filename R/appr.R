@@ -142,7 +142,9 @@ appr_pli <- function(
       value = pct
     )
 
-  knitr::kable(pli)
+  cat(subject)
+  cat('\n')
+  cat(knitr::kable(pli))
 
   l234 <- pli$`Level 2` + pli$`Level 3` + pli$`Level 4`
   l34 <-  pli$`Level 3` + pli$`Level 4`
@@ -150,6 +152,4 @@ appr_pli <- function(
   cat(paste0('2s + 3s + 4s = ', l234, '\n'))
   cat(paste0('3s + 4s = ', l34, '\n'))
   cat(paste0('PLI = ', l234 + l34, '\n'))
-
-  TRUE
 }
