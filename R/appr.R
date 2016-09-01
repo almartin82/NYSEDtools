@@ -145,7 +145,7 @@ appr_pli <- function(
   cat(subject)
   cat('\n')
 
-  print(ascii::ascii(pli), type = 'pandoc')
+  cat(knitr::kable(pli, format = "markdown"))
 
   l234 <- pli$`Level 2` + pli$`Level 3` + pli$`Level 4`
   l34 <-  pli$`Level 3` + pli$`Level 4`
