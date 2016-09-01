@@ -101,6 +101,13 @@ appr_performance_by_year_table <- function(
 
 
 
+#' APPR PLI table
+#'
+#' @inheritParams appr_performance_by_year_table
+#'
+#' @return prints to console, TRUE if successful
+#' @export
+
 appr_pli <- function(
   sirs301,
   subject,
