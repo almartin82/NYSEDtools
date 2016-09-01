@@ -98,3 +98,51 @@ appr_performance_by_year_table <- function(
   )
 
 }
+
+
+
+appr_pli <- function(
+  sirs301,
+  subject,
+  end_year,
+  location_name
+) {
+  #NSE problems
+  location_name_in <- location_name
+  end_year_in <- end_year
+
+  #limit the data to matching rows based on the arguments above
+  df <- sirs301$ela_math %>%
+    dplyr::filter(
+      test_subject == subject,
+      test_year == end_year,
+      location_name == location_name_in
+    )
+
+  #group by performance level and get the percent in each bin
+  pli <- df %>%
+    dplyr::group_by(location_name, performance_level) %>%
+    dplyr::summarize(
+      n = n()
+    ) %>%
+    dplyr::mutate(
+      pct = ((n / sum(n)) * 100) %>% round(0),
+      total = sum(n)
+    ) %>%
+    dplyr::select(-n) %>%
+    tidyr::spread(
+      key = performance_level,
+      value = pct
+    )
+
+  knitr::kable(pli)
+
+  l234 <- pli$`Level 2` + pli$`Level 3` + pli$`Level 4`
+  l34 <-  pli$`Level 3` + pli$`Level 4`
+
+  cat(paste0('2s + 3s + 4s = ', l234, '\n'))
+  cat(paste0('3s + 4s = ', l34, '\n'))
+  cat(paste0('PLI = ', l234 + l34, '\n'))
+
+  TRUE
+}
