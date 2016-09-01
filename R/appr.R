@@ -144,7 +144,7 @@ appr_pli <- function(
 
   cat(subject)
   cat('\n')
-  cat(knitr::kable(pli))
+  write.table(pli)
 
   l234 <- pli$`Level 2` + pli$`Level 3` + pli$`Level 4`
   l34 <-  pli$`Level 3` + pli$`Level 4`
