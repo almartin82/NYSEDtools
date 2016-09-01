@@ -105,7 +105,7 @@ appr_performance_by_year_table <- function(
 #'
 #' @inheritParams appr_performance_by_year_table
 #'
-#' @return prints to console, TRUE if successful
+#' @return prints to console only
 #' @export
 
 appr_pli <- function(
@@ -142,10 +142,14 @@ appr_pli <- function(
       value = pct
     )
 
+  cat(location_name)
+  cat('\n')
+
   cat(subject)
   cat('\n')
 
   print(knitr::kable(pli, format = "markdown"))
+  cat('\n')
 
   l234 <- pli$`Level 2` + pli$`Level 3` + pli$`Level 4`
   l34 <-  pli$`Level 3` + pli$`Level 4`
@@ -153,4 +157,54 @@ appr_pli <- function(
   cat(paste0('2s + 3s + 4s = ', l234, '\n'))
   cat(paste0('3s + 4s = ', l34, '\n'))
   cat(paste0('PLI = ', l234 + l34, '\n'))
+}
+
+
+
+#' APPR Number Tested
+#'
+#' @inheritParams appr_performance_by_year_table
+#'
+#' @return data.frame
+#' @export
+
+appr_num_tested <- function(
+  sirs301,
+  subject,
+  end_year,
+  location_name
+) {
+  #NSE problems
+  location_name_in <- location_name
+  end_year_in <- end_year
+
+  #limit the data to matching rows based on the arguments above
+  df <- sirs301$ela_math %>%
+    dplyr::filter(
+      test_subject == subject,
+      test_year == end_year,
+      location_name == location_name_in
+    )
+
+  #make table
+  out <- df %>%
+    dplyr::mutate(
+      tested = ifelse(test_status == 'TEST', 'Tested', NA),
+      tested = ifelse(test_status == 'NTEST', 'Untested', tested)
+    ) %>%
+    dplyr::group_by(
+      test_grade, tested
+    ) %>%
+    dplyr::summarize(
+      n = n()
+    ) %>%
+    dplyr::mutate(
+      Enrolled = sum(n)
+    ) %>%
+    tidyr::spread(
+      key = tested,
+      value = n
+    )
+
+  out
 }
