@@ -9,7 +9,7 @@ appr_performance_by_year_table(sirs301, subject, end_year, location_name)
 \arguments{
 \item{sirs301}{a valid sirs301 object}
 
-\item{subject}{c('ELA', 'Math', 'Science')}
+\item{subject}{c('ELA', 'Math', 'Sci')}
 
 \item{end_year}{integer, year that you want to generate the table for}
 

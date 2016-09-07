@@ -1,7 +1,7 @@
 #' A function to make the APPR performance vs 2+ year performance table.
 #'
 #' @param sirs301 a valid sirs301 object
-#' @param subject c('ELA', 'Math', 'Science')
+#' @param subject c('ELA', 'Math', 'Sci')
 #' @param end_year integer, year that you want to generate the table for
 #' @param location_name name of the location to report on.
 #'
@@ -19,7 +19,7 @@ appr_performance_by_year_table <- function(
   end_year_in <- end_year
 
   #limit the data to matching rows based on the arguments above
-  if (subject == 'Science') {
+  if (subject == 'Sci') {
     df <- sirs301$sci %>%
       dplyr::filter(
         test_subject == subject,
@@ -126,7 +126,7 @@ appr_pli <- function(
   end_year_in <- end_year
 
   #limit the data to matching rows based on the arguments above
-  if (subject == 'Science') {
+  if (subject == 'Sci') {
     df <- sirs301$sci %>%
       dplyr::filter(
         test_subject == subject,
@@ -195,7 +195,7 @@ appr_num_tested <- function(
   end_year_in <- end_year
 
   #limit the data to matching rows based on the arguments above
-  if (subject == 'Science') {
+  if (subject == 'Sci') {
     df <- sirs301$sci %>%
       dplyr::filter(
         test_subject == subject,
