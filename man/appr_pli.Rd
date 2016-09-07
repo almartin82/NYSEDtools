@@ -9,7 +9,7 @@ appr_pli(sirs301, subject, end_year, location_name)
 \arguments{
 \item{sirs301}{a valid sirs301 object}
 
-\item{subject}{c('ELA', 'Math')}
+\item{subject}{c('ELA', 'Math', 'Science')}
 
 \item{end_year}{integer, year that you want to generate the table for}
 
