@@ -44,7 +44,7 @@ appr_performance_by_year_table <- function(
       dummy_proficient = ifelse(performance_level_numeric %in% c(1, 2), FALSE, dummy_proficient)
     ) %>%
     dplyr::summarize(
-      `Percent Proficient` = mean(dummy_proficient),
+      `Percent Proficient` = mean(dummy_proficient, na.rm = TRUE),
       `Number Tested` = sum(dummy_tested)
     )
 
