@@ -20,7 +20,7 @@ appr_performance_by_year_table <- function(
 
   #limit the data to matching rows based on the arguments above
   if (subject == 'Science') {
-    df <- sirs301$science %>%
+    df <- sirs301$sci %>%
       dplyr::filter(
         test_subject == subject,
         test_year == end_year,
@@ -127,7 +127,7 @@ appr_pli <- function(
 
   #limit the data to matching rows based on the arguments above
   if (subject == 'Science') {
-    df <- sirs301$science %>%
+    df <- sirs301$sci %>%
       dplyr::filter(
         test_subject == subject,
         test_year == end_year,
@@ -196,7 +196,7 @@ appr_num_tested <- function(
 
   #limit the data to matching rows based on the arguments above
   if (subject == 'Science') {
-    df <- sirs301$science %>%
+    df <- sirs301$sci %>%
       dplyr::filter(
         test_subject == subject,
         test_year == end_year,
