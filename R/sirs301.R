@@ -17,14 +17,14 @@
 
 sirs301 <- function(
   csvs,
-  cohort_kind = 'college_entry',
-  roster = NA,
-  verbose = FALSE,
+  cohort_kind,
+  roster,
+  verbose,
   ...
 ) UseMethod("sirs301")
 
 #' @export
-sirs301.default <- function(csvs, cohort_kind, roster, verbose, ...) {
+sirs301.default <- function(csvs, cohort_kind = 'college_entry', roster = NA, verbose = FALSE, ...) {
 
   #clean up df names
   df <- janitor::clean_names(csvs)
