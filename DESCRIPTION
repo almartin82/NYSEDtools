@@ -15,6 +15,7 @@ Suggests:
     testthat,
     knitr
 Imports:
+    ascii,
     dplyr,
     ensurer,
     janitor,

@@ -2,6 +2,9 @@
 
 S3method(print,sirs301)
 S3method(sirs301,default)
+export(appr_num_tested)
+export(appr_performance_by_year_table)
+export(appr_pli)
 export(calculate_cohort)
 export(cohort_performance_bins)
 export(sirs301)
