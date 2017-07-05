@@ -18,17 +18,32 @@ sirs301_import_csvs <- function(
 
   # Read in all export files
   if (verbose) message("Reading path names.")
-  all_exports <- dir(
+  all_xls <- dir(
     path = path, pattern = "xls", ignore.case = TRUE,
     recursive = TRUE, full.names = TRUE
   )
+  all_csv <- dir(
+    path = path, pattern = "csv", ignore.case = TRUE,
+    recursive = TRUE, full.names = TRUE
+  )
+
+  num_files <- max(length(all_xls), length(all_csv))
+  if (verbose) sprintf("There are %s files in the path you provided.", num_files) %>% message()
 
   # Write files to list objects
   if (verbose) message("Reading SIRS 301 export files.")
-  exports_list <- lapply(
-    all_exports, read.delim, header = TRUE, fileEncoding = "UTF-16LE",
-    stringsAsFactors = FALSE, colClasses = 'character'
-  )
+
+  # insane IBM cognos csvs are tsvs thing
+  if (length(all_xls) > 0) {
+    exports_list <- lapply(
+      all_xls, read.delim, header = TRUE, fileEncoding = "UTF-16LE",
+      stringsAsFactors = FALSE, colClasses = 'character'
+    )
+  }
+
+  if (length(all_csv) > 0) {
+    exports_list <- lapply(all_csv, readr::read_csv, col_types = readr::cols(.default = "c"))
+  }
 
   # Combine into one df
   exports_results <- dplyr::bind_rows(exports_list)
