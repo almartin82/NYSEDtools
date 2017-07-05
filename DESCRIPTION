@@ -21,7 +21,6 @@ Imports:
     janitor,
     tibble,
     tidyr
-Remotes: sfirke/janitor
 VignetteBuilder: knitr
 LazyData: TRUE
 RoxygenNote: 5.0.1
