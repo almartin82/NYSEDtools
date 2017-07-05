@@ -51,11 +51,14 @@ produces:
 
 ### Creating the sirs301 object
 
+This package processes the raw sirs 301 data and creates a custom data object, class `sirs301`.  That custom object has cleaned up data frames (ie, numeric performance levels) and calculated fields, like growth.  Having this cleaned-up object powers the analysis and visualization functions included in the package.
+
 ```{r}
 
 demo_301 <- NYSEDtools::sirs301(csvs = raw_301)
 
 ```
+Produces:
 
 ```
 > demo_301 <- sirs301(csvs = raw_301)
