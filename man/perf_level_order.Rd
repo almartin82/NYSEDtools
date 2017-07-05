@@ -12,4 +12,3 @@ perf_level_order(x)
 \description{
 helper function used by cohort_performance_bins to put performance levels in correct order
 }
-

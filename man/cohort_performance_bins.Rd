@@ -19,4 +19,3 @@ ggplot2 object
 \description{
 Cohort Performance Bins
 }
-

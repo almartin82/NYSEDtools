@@ -15,4 +15,3 @@ dataframe with all possible growth windows per student/subject
 \description{
 helper function for `sirs301_ela_math_growth`
 }
-

@@ -18,4 +18,3 @@ dataframe, class sirs301_ela_math_growth
 \description{
 Generate student-level growth scores from the SIRS301 tested report
 }
-

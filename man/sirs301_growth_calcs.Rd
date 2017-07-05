@@ -15,4 +15,3 @@ dataframe with growth calculations
 \description{
 Do growth calculations on a completed scaffold
 }
-

@@ -21,4 +21,3 @@ numeric vector with student's cohort name
 \description{
 caclculate cohort
 }
-

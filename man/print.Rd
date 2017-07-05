@@ -20,4 +20,3 @@ prints to console
 \details{
 Prints a summary of the a \code{sirs301} object.
 }
-
