@@ -1,3 +1,9 @@
+# NYSEDtools 0.2.0 | 07/06/2017
+
+* procedurally generated demo data so that demonstrations/vignettes can be written
+* updated `sirs301_import` functions to take regular csvs
+
+
 # NYSEDtools 0.1.0 | 08/05/2016
 
 * running `sirs301()` will create a `sirs301$growth` data object.
