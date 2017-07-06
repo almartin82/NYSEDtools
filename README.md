@@ -12,8 +12,8 @@ All New York State school districts receive data from the state in a common data
 NYS test data is released through the <a href="https://reports.nycenet.edu/statel2rptreports/">'State Level 2 Reports' (L2RPT)</a> system, which is an IBM Cognos platform.  You can <a href="http://www.p12.nysed.gov/irs/level2reports/home.html">read more</a> about L2RPT on the NYSED website.
 `NYSEDtools` uses the 'SIRS-301 Tested/Not Tested Confirmation Report', which can be found at `L2RPT - SEDDAS` > `Tested / Not Tested,
 ` > `SIRS-301 Tested/Not Tested Confirmation Report`.
-Choose the most general options possible (you will need to run ELA, Math and Sciecne exports separately).
-Click on the `All Students` row and `Tested` column to get a table of individual student records, then `View in Excel Options` > `View in Excel 2007 Format`.  This package consumes those export files.
+Choose the most general options possible (you will need to run ELA, Math and Science exports separately).
+Click on the `All Students` row and `Tested` column to get a table of individual student records, then `View in Excel Options` > `View in Excel 2007 Format`.  This package consumes those export files - save them to your computer.  You will likely need to generate several export files to cover all the years of data housed in L2RPT.
 
 ### Loading data exports from L2RPT
 This quickstart uses the dummy data in `inst/raw-data`.  **All data in those files is procedurally generated**, not merely anonymized, meaning that while it simulates the look and feel of a L2RPT file, it is not derived from personally identifiable student data in any way.
