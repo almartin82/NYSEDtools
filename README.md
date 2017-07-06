@@ -82,14 +82,19 @@ The general recipe for a visualization or analysis function is:
 
 Most of the time school data analysts are interested in grade levels of students.  That's easy to do in this framework - simply create a vector of studentids that, for instance, corresponds to '6th grade students at Demo School' and pass that to the visualization or analysis function.
 
-
+First let's save the studentids of the 6th graders to a vector:
 ```{r}
-#get 6th graders
 gr6 <- demo_301$ela_math %>% 
   dplyr::filter(location_name == 'DEMO SCHOOL' & test_grade == 6 & test_year == 2016) %>%
   dplyr::select(student_id) %>%
   unlist() %>% unname() %>% unique()
 
+gr6
+```
+
+Now we'll generate `cohort_performance_bins` for these students by passing that vector to `studentids`:
+
+```{r}
 gr6_math_bins <- cohort_performance_bins(
   sirs301_obj = demo_301,
   studentids = gr6,
@@ -98,8 +103,6 @@ gr6_math_bins <- cohort_performance_bins(
 
 gr6_math_bins
 ```
-
-produces:
 
 <img src="https://raw.githubusercontent.com/almartin82/NYSEDtools/master/inst/images/gr6_math_bins.png" /> 
 
