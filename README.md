@@ -71,5 +71,37 @@ The sirs301 object has 4 dataframes, named:
 ela_math, sci, nyseslat, growth
 ```
 
+### The payoff - easy visualizations, analysis, and insight!
+
+Now that you have a `sirs301` object you can hand it off to the visualization and analysis functions in this package. 
+
+The general recipe for a visualization or analysis function is:
+
+1. a `sirs301` object
+2. a vector of studentids
+
+Most of the time school data analysts are interested in grade levels of students.  That's easy to do in this framework - simply create a vector of studentids that, for instance, corresponds to '6th grade students at Demo School' and pass that to the visualization or analysis function.
+
+
+```{r}
+#get 6th graders
+gr6 <- demo_301$ela_math %>% 
+  dplyr::filter(location_name == 'DEMO SCHOOL' & test_grade == 6 & test_year == 2016) %>%
+  dplyr::select(student_id) %>%
+  unlist() %>% unname() %>% unique()
+
+gr6_math_bins <- cohort_performance_bins(
+  sirs301_obj = demo_301,
+  studentids = gr6,
+  subject = 'Math'
+)
+
+gr6_math_bins
+```
+
+produces:
+
+<img src= 
+
 ## Contributing to NYSEDtools
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
