@@ -19,11 +19,9 @@ Click on the `All Students` row and `Tested` column to get a table of individual
 This quickstart uses the dummy data in `inst/raw-data`.  **All data in those files is procedurally generated**, not merely anonymized, meaning that while it simulates the look and feel of a L2RPT file, it is not derived from personally identifiable student data in any way.
 
 ```{r}
-
 raw_301 <- NYSEDtools::sirs301_import_csvs(path = file.path('inst', 'raw-data'))
 
 head(raw_301)
-
 ```
 
 produces:
@@ -54,18 +52,18 @@ produces:
 This package processes the raw sirs 301 data and creates a custom data object, class `sirs301`.  That custom object has cleaned up data frames (ie, numeric performance levels) and calculated fields, like growth.  Having this cleaned-up object powers the analysis and visualization functions included in the package.
 
 ```{r}
-
 demo_301 <- NYSEDtools::sirs301(csvs = raw_301)
-
+demo_301
 ```
+
 Produces:
 
 ```
 > demo_301 <- sirs301(csvs = raw_301)
 > demo_301
 A sirs301 object repesenting:
-- 1 school years
-- 372 students from 1 schools
+- 2 school years
+- 468 students from 1 schools
 
 The sirs301 object has 4 dataframes, named:
 ela_math, sci, nyseslat, growth
@@ -82,10 +80,10 @@ The general recipe for a visualization or analysis function is:
 
 Most of the time school data analysts are interested in grade levels of students.  That's easy to do in this framework - simply create a vector of studentids that, for instance, corresponds to '6th grade students at Demo School' and pass that to the visualization or analysis function.
 
-First let's save the studentids of the 6th graders to a vector:
+First let's save the studentids of the current 6th graders to a vector:
 ```{r}
 gr6 <- demo_301$ela_math %>% 
-  dplyr::filter(location_name == 'DEMO SCHOOL' & test_grade == 6 & test_year == 2016) %>%
+  dplyr::filter(location_name == 'DEMO SCHOOL' & test_grade == 6 & test_year == 2017) %>%
   dplyr::select(student_id) %>%
   unlist() %>% unname() %>% unique()
 
