@@ -101,7 +101,7 @@ gr6_math_bins
 
 produces:
 
-<img src= 
+<img src="https://raw.githubusercontent.com/almartin82/NYSEDtools/master/inst/images/gr6_math_bins.png" /> 
 
 ## Contributing to NYSEDtools
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
