@@ -60,10 +60,9 @@ cohort_performance_bins <- function(
       order = perf_level_order(as.numeric(performance_level_numeric))
     )
 
-
   prepped <- perf_level_totals %>%
     dplyr::left_join(
-      term_totals[, c(2,3)],
+      term_totals[, c(2, 3)],
       by = "test_grade"
     ) %>%
     dplyr::mutate(
@@ -105,7 +104,7 @@ cohort_performance_bins <- function(
       aes(
         x = test_grade,
         y = pct,
-        fill = factor(performance_level_numeric)
+        fill = factor(performance_level_numeric, levels = c(4, 3))
       ),
       stat = "identity"
     ) +
