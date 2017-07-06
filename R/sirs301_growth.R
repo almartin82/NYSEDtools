@@ -26,7 +26,7 @@ sirs301_ela_math_growth <- function(
 }
 
 
-#' Crate empty scaffold for
+#' Create empty scaffold for
 #'
 #' @description helper function for `sirs301_ela_math_growth`
 #' @inheritParams sirs301_ela_math_growth
@@ -188,7 +188,7 @@ sirs301_fill_scaffold <- function(sirs301_ela_math, scaffold, headline = TRUE) {
 }
 
 
-#' Do growth calculations on a completed scaffold
+#' run growth calculations given a completed scaffold
 #'
 #' @param complete_scaffold dataframe, output of sirs301_fill_scaffold
 #'
