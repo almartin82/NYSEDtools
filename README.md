@@ -4,7 +4,7 @@ Tools for working with educational data from New York State's Level 2 Reporting 
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
 ## Why NYSEDtools?
-All New York State school districts receive data from the state in a common data format.  `NYSEDtools` attempts to make a data analyst's life easier by providing an expressive vocabulary of transformations and visualizations that show the progress of schools, grade levels, and students.
+All New York State school districts receive data from the state in a common data format.  `NYSEDtools` attempts to make a data analyst's life easier by providing an expressive vocabulary of data cleaning functions, analysis, calculations, and visualizations that show the progress of schools, grade levels, and students.
 
 ## Quickstart!
 
