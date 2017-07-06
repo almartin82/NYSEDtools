@@ -2,7 +2,7 @@
 % Please edit documentation in R/sirs301_growth.R
 \name{sirs301_growth_calcs}
 \alias{sirs301_growth_calcs}
-\title{Do growth calculations on a completed scaffold}
+\title{run growth calculations given a completed scaffold}
 \usage{
 sirs301_growth_calcs(complete_scaffold)
 }
@@ -13,5 +13,5 @@ sirs301_growth_calcs(complete_scaffold)
 dataframe with growth calculations
 }
 \description{
-Do growth calculations on a completed scaffold
+run growth calculations given a completed scaffold
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sirs301_growth.R
 \name{sirs301_empty_scaffold}
 \alias{sirs301_empty_scaffold}
-\title{Crate empty scaffold for}
+\title{Create empty scaffold for}
 \usage{
 sirs301_empty_scaffold(sirs301_ela_math)
 }
