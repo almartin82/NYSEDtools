@@ -1,3 +1,8 @@
+# NYSEDtools 0.2.1 | 07/06/2017
+
+* procedurally generated 2017 demo
+* fixed cohort_performance_bins to play nicely with ggplot2
+
 # NYSEDtools 0.2.0 | 07/06/2017
 
 * procedurally generated demo data so that demonstrations/vignettes can be written
