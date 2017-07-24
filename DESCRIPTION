@@ -16,7 +16,8 @@ Suggests:
 Imports:
     ascii,
     tidyverse,
-    ensurer
+    ensurer,
+    rprojroot
 VignetteBuilder: knitr
 LazyData: TRUE
 RoxygenNote: 6.0.1
