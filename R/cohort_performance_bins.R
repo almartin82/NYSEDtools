@@ -14,13 +14,7 @@ cohort_performance_bins <- function(
 ) {
 
   #be defensive against bad `subject` parameters
-  valid_subjects <- c('ELA', 'Math', 'Sci')
-  subject %>% ensurer::ensure_that(
-    . %in% valid_subjects ~
-      paste0("valid values for subject are: ",
-             paste(valid_subjects, collapse = ', ')
-      )
-  )
+  subject %>% ensure_subjects
 
   #extract subject
   if (subject %in% c('ELA', 'Math')) {
