@@ -5,7 +5,7 @@
 \title{Topline Performance Stats}
 \usage{
 topline_performance_stats(sirs301_obj, studentids, subjects = c("ELA",
-  "Math"), years = c(2017))
+  "Math"), years = c(2017), by = c("district_name", "test_subject"))
 }
 \arguments{
 \item{sirs301_obj}{a sirs301 object}

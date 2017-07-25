@@ -12,10 +12,12 @@ topline_performance_stats <- function(
   sirs301_obj,
   studentids,
   subjects = c('ELA', 'Math'),
-  years = c(2017)
+  years = c(2017),
+  by = c('district_name', 'test_subject')
 ) {
 
   limit_ela_math(sirs301_obj$ela_math, studentids, subjects, years) %>%
+  dplyr::group_by_at(by) %>%
   dplyr::summarize(
     percent_proficient = mean(is_proficient),
     `L1%` = round(mean(is_l1) * 100, 0),
