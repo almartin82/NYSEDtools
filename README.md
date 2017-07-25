@@ -126,5 +126,21 @@ You could use `NYSEDtools`
  * as a workflow tool to calculate change over time
  * as a reporting/analysis tool, making use of some of the visualization and analytic functions
 
-## Code of Conduct
+### Things to know
+
+* Your district may have internal structure (ie two 'schools' that operate under one K-8 charter).  If that's the case, you'll need to update `location_name` based on your grade structure.
+
+
+## Contributing
+
+Contributions are welcome!
+
+You can:
+
+- submit suggestions and bug-reports at: https://github.com/almartin82/NYSEDtools/issues
+- send a pull request on: https://github.com/almartin82/NYSEDtools
+- compose a friendly e-mail to [almartin@gmail.com](mailto:almartin@gmail.com)
+
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+
