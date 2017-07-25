@@ -8,16 +8,22 @@ Description: NYSEDtools is a suite of data management, analysis, visualization
     and reporting tools for NYSED L2RPT Data.
 License: file LICENSE
 Depends:
+    ggplot2,
     magrittr,
-    R(>= 2.10.0)
+    R(>= 2.10.0),
 Suggests:
     testthat,
     knitr
 Imports:
     ascii,
-    tidyverse,
+    dplyr,
     ensurer,
-    rprojroot
+    janitor,
+    readr,
+    rprojroot,
+    tibble,
+    tidyverse,
+    tidyr
 VignetteBuilder: knitr
 LazyData: TRUE
 RoxygenNote: 6.0.1

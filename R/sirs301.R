@@ -97,7 +97,13 @@ sirs301.default <- function(csvs, cohort_kind = 'college_entry', roster = NA, ve
     dplyr::mutate(
       scale_score = ifelse(scale_score == '', NA, as.numeric(scale_score)),
       performance_level_numeric = ifelse(
-        performance_level_numeric == 'tested', NA, as.numeric(performance_level_numeric))
+        performance_level_numeric == 'tested', NA, as.numeric(performance_level_numeric)),
+      is_l1 = performance_level_numeric == 1,
+      is_l2 = performance_level_numeric == 2,
+      is_l3 = performance_level_numeric == 3,
+      is_l4 = performance_level_numeric == 4,
+      is_l2_or_higher = performance_level_numeric >= 2,
+      is_proficient = performance_level_numeric >= 3
     ) %>%
     dplyr::ungroup()
 

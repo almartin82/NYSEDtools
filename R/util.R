@@ -32,3 +32,34 @@ kipp_4col <- c(
   rgb(254, 188, 17, max = 255),
   rgb(247, 148, 30, max = 255)
 )
+
+
+
+ensure_ela_math <- ensurer::ensures_that(. %in% c('ELA', 'Math') ~ paste0("valid values for subjects are: 'ELA', 'Math'"))
+ensure_subjects <- ensurer::ensures_that(. %in% c('ELA', 'Math', 'Sci') ~ paste0("valid values for subjects are: 'ELA', 'Math', 'Sci'"))
+
+#' utility function to filter a sirs301 object
+#'
+#' @param data sirs301$ela_math data object
+#' @param studentids students you want to include in the performance stats
+#' @param subjects c('ELA', 'Math')
+#' @param year test year (ending academic year)
+#'
+#' @return tbl_df with matching data
+#' @export
+
+limit_ela_math <- function(data, studentids, subjects, years) {
+
+  #expects sirs301_ela_math objects
+  data %>% ensurer::ensure_that(
+    inherits(., 'sirs301_ela_math') ~ 'data must be a sirs301_ela_math object'
+  )
+
+  #be defensive about bad arguments to subjects
+  subjects %>% ensure_ela_math
+
+  data %>%
+    dplyr::filter(student_id %in% studentids) %>%
+    dplyr::filter(test_subject %in% subjects) %>%
+    dplyr::filter(test_year %in% years)
+}
