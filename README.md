@@ -130,7 +130,6 @@ You could use `NYSEDtools`
 
 * Your district may have internal structure (ie two 'schools' that operate under one K-8 charter).  If that's the case, you'll need to update `location_name` based on your grade structure.
 
-
 ## Contributing
 
 Contributions are welcome!
@@ -142,5 +141,3 @@ You can:
 - compose a friendly e-mail to [almartin@gmail.com](mailto:almartin@gmail.com)
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
-
-
