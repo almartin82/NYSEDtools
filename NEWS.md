@@ -1,3 +1,7 @@
+# NYSEDtools 0.2.2 | 07/25/2017
+
+* `topline_stats` and `topline_performance_chart`.
+
 # NYSEDtools 0.2.1 | 07/06/2017
 
 * procedurally generated 2017 demo
