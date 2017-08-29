@@ -9,4 +9,3 @@ test_that("cohort_performance_bins should return ggplot object", {
 
   expect_is(gr6_math_bins, 'ggplot')
 })
-

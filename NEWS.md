@@ -1,11 +1,18 @@
+# NYSEDtools 0.2.3 | 08/29/2017
+
+* resolves bug [#27](https://github.com/almartin82/NYSEDtools/issues/27) with how sirs301 checks for the existence of a roster  
+
+
 # NYSEDtools 0.2.2 | 07/25/2017
 
 * `topline_stats` and `topline_performance_chart`.
+
 
 # NYSEDtools 0.2.1 | 07/06/2017
 
 * procedurally generated 2017 demo
 * fixed cohort_performance_bins to play nicely with ggplot2
+
 
 # NYSEDtools 0.2.0 | 07/06/2017
 

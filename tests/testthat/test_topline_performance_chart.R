@@ -10,4 +10,4 @@ test_that("topline_performance_chart should return ggplot object", {
   )
 
   expect_is(ex, 'ggplot')
-})d
+})

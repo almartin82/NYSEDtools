@@ -24,7 +24,12 @@ sirs301 <- function(
 ) UseMethod("sirs301")
 
 #' @export
-sirs301.default <- function(csvs, cohort_kind = 'college_entry', roster = NA, verbose = FALSE, ...) {
+sirs301.default <- function(
+  csvs,
+  cohort_kind = 'college_entry',
+  roster = NULL,
+  verbose = FALSE,
+  ...) {
 
   #clean up df names
   df <- janitor::clean_names(csvs)
@@ -155,7 +160,7 @@ sirs301.default <- function(csvs, cohort_kind = 'college_entry', roster = NA, ve
     'growth' = growth
   )
 
-  if (!is.na(roster)) {
+  if (!is.null(roster)) {
     out[['roster']] <- roster
   }
 
