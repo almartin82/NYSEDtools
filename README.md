@@ -1,5 +1,9 @@
 # NYSEDtools
-Tools for working with educational data from New York State's Level 2 Reporting System (L2RPT)
+
+## Development note: Development on NYSEDtools is currently paused, as I'm not interacting with reports and data from New York in my day job.  It is likely that data formats have drifted since these tools were actively developed in 2017.  If anyone is interested in working with L2RPT data, please feel free to file an issue in the repo and ping me at almartin at gmail dot com.
+
+
+## Tools for working with educational data from New York State's Level 2 Reporting System (L2RPT)
 
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
